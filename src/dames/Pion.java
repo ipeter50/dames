@@ -52,22 +52,22 @@ public class Pion {
     }
     
     public boolean deplacable(Plateau p){
-        boolean res=true;
+        boolean res=false;
         ArrayList<ArrayList<Pion>> damier= p.getDamier();
         if(this.estNoir){
-            if(this.coordonnees[0]+1<10 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]+1)!= null){
-                res=false;
+            if(this.coordonnees[0]+1<10 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]+1)== null){
+                res=true;
             }
-            else if (this.coordonnees[0]+1<10 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]-1)!= null){
-                res=false;
+            else if (this.coordonnees[0]+1<10 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]-1)== null){
+                res=true;
             }
             
         }else{
-            if(this.coordonnees[0]-1>=0 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]+1)!= null){
-                res=false;
+            if(this.coordonnees[0]-1>=0 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]+1)== null){
+                res=true;
             }
-            else if (this.coordonnees[0]-1>=0 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]-1)!= null){
-                res=false;
+            else if (this.coordonnees[0]-1>=0 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]-1)== null){
+                res=true;
             }
             
         }
@@ -82,7 +82,7 @@ public class Pion {
         ArrayList<int[]> dep =new ArrayList<int[]>();
         ArrayList<ArrayList<Pion>> damier= p.getDamier();
         if(this.peutManger(p)){
-            if(this.coordonnees[0]+1<10 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]+1)!= null){
+            if(this.coordonnees[0]+2<10 && this.coordonnees[1]+2<10 && damier.get(this.coordonnees[0]+2).get(coordonnees[1]+2)!= null){
                 int[] pos= new int[2];
                 pos[0]=this.coordonnees[0]+1;
                 pos[1]=this.coordonnees[1]+1;
