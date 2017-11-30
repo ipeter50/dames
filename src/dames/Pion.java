@@ -73,6 +73,40 @@ public class Pion {
         return res;
 
     }
+    
+    public void deplacer(int[] newPos){
+        
+        this.coordonnees[0]=newPos[0];
+        this.coordonnees[1]=newPos[1];
+    }
+    
+    public void manger(int[] newPos, Plateau p){
+        ArrayList<ArrayList<Pion>> damier = p.getDamier();
+        if(this.coordonnees[0]-newPos[0]>0){
+            if(this.coordonnees[1]-newPos[1]>0){
+                damier.get(newPos[0]-1).set(newPos[1]-1,null);
+                this.coordonnees[0]=newPos[0];
+                this.coordonnees[1]=newPos[1];
+            }else{
+                damier.get(newPos[0]-1).set(newPos[1]+1,null);
+                this.coordonnees[0]=newPos[0];
+                this.coordonnees[1]=newPos[1];
+                
+            }
+        }else{
+            if(this.coordonnees[1]-newPos[1]>0){
+                damier.get(newPos[0]+1).set(newPos[1]-1,null);
+                this.coordonnees[0]=newPos[0];
+                this.coordonnees[1]=newPos[1];
+            }else{
+                damier.get(newPos[0]+1).set(newPos[1]+1,null);
+                this.coordonnees[0]=newPos[0];
+                this.coordonnees[1]=newPos[1];
+                
+            }
+            
+        }
+    }
 
     public ArrayList<int[]> deplcementsPossibles(Plateau p) {
         ArrayList<int[]> dep = new ArrayList<int[]>();
