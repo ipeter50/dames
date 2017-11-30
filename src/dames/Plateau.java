@@ -61,14 +61,14 @@ public class Plateau {
                 } else {
                     if (damier.get(i).get(j).isEstNoir()) {
                         if (damier.get(i).get(j).isEstDame()) {
-                            ligne+="|RN ";
+                            ligne+="|DN ";
                         }
                         else {
                             ligne+="| N ";
                         }
                     } else {
                         if (damier.get(i).get(j).isEstDame()) {
-                            ligne+="|RB ";
+                            ligne+="|DB ";
                         }
                         else {
                             ligne+="| B ";
@@ -78,5 +78,9 @@ public class Plateau {
             }
             System.out.println(ligne+"|\n");
         }
+    }
+    
+    public void tourDeJeu() {
+        
     }
 }
