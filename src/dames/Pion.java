@@ -53,22 +53,95 @@ public class Pion {
     
     public boolean deplacable(Plateau p){
         boolean res=true;
+        ArrayList<ArrayList<Pion>> damier= p.getDamier();
         if(this.estNoir){
-            if(!this.estDame){
-                ArrayList<ArrayList<Pion>> damier= p.getDamier();
-                if(damier.get(this.coordonnees[0]+1).get(coordonnees[1]+1)!= null){
-                    res=false;
-                }
-                else if (damier.get(this.coordonnees[0]+1).get(coordonnees[1]-1)!= null){
-                    res=false;
-                }
+            if(this.coordonnees[0]+1<10 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]+1)!= null){
+                res=false;
             }
+            else if (this.coordonnees[0]+1<10 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]-1)!= null){
+                res=false;
+            }
+            
+        }else{
+            if(this.coordonnees[0]-1>=0 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]+1)!= null){
+                res=false;
+            }
+            else if (this.coordonnees[0]-1>=0 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]-1)!= null){
+                res=false;
+            }
+            
         }
         
         
         
         return res;
         
+    }
+    
+    public ArrayList<int[]> deplcementsPossibles(Plateau p){
+        ArrayList<int[]> dep =new ArrayList<int[]>();
+        ArrayList<ArrayList<Pion>> damier= p.getDamier();
+        if(this.peutManger(p)){
+            if(this.coordonnees[0]+1<10 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]+1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]+1;
+                pos[1]=this.coordonnees[1]+1;
+                dep.add(pos);
+            }
+            if (this.coordonnees[0]+1<10 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]-1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]+1;
+                pos[1]=this.coordonnees[1]-1;
+                dep.add(pos);
+            }
+            if(this.coordonnees[0]-1>=0 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]+1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]-1;
+                pos[1]=this.coordonnees[1]+1;
+                dep.add(pos);
+            }
+            if (this.coordonnees[0]-1>=0 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]-1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]-1;
+                pos[1]=this.coordonnees[1]-1;
+                dep.add(pos);
+            }
+            
+        }
+        else if (this.deplacable(p)){
+            if(this.estNoir){
+            if(this.coordonnees[0]+1<10 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]+1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]+1;
+                pos[1]=this.coordonnees[1]+1;
+                dep.add(pos);
+            }
+            if (this.coordonnees[0]+1<10 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]+1).get(coordonnees[1]-1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]+1;
+                pos[1]=this.coordonnees[1]-1;
+                dep.add(pos);
+            }
+            
+        }else{
+            if(this.coordonnees[0]-1>=0 && this.coordonnees[1]+1<10 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]+1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]-1;
+                pos[1]=this.coordonnees[1]+1;
+                dep.add(pos);
+            }
+            if (this.coordonnees[0]-1>=0 && this.coordonnees[1]-1>=0 && damier.get(this.coordonnees[0]-1).get(coordonnees[1]-1)!= null){
+                int[] pos= new int[2];
+                pos[0]=this.coordonnees[0]-1;
+                pos[1]=this.coordonnees[1]-1;
+                dep.add(pos);
+            }
+            
+        }
+            
+        }
+        
+        return dep;
     }
     
     
