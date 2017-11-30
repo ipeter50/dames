@@ -60,9 +60,19 @@ public class Plateau {
                     ligne+="|   ";
                 } else {
                     if (damier.get(i).get(j).isEstNoir()) {
-                        ligne+="| N ";
+                        if (damier.get(i).get(j).isEstDame()) {
+                            ligne+="|RN ";
+                        }
+                        else {
+                            ligne+="| N ";
+                        }
                     } else {
-                        ligne+="| B ";
+                        if (damier.get(i).get(j).isEstDame()) {
+                            ligne+="|RB ";
+                        }
+                        else {
+                            ligne+="| B ";
+                        }
                     }
                 }
             }
