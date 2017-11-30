@@ -5,10 +5,16 @@
  */
 package dames;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jules
  */
 public class Plateau {
+    ArrayList<ArrayList<Pion>> damier;
     
+    public static void damierInit() {
+        
+    }
 }
